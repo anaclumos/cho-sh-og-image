@@ -142,6 +142,8 @@ function getCss(theme: Theme, fontSize: string) {
         font-style: normal;
         color: ${foreground};
         line-height: 1.8;
+        word-wrap: break-word;
+        word-break: keep-all;
     }`;
 }
 
