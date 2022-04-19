@@ -1,10 +1,22 @@
 import { marked } from 'marked';
+import { readFileSync } from 'fs';
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest, Theme } from './types';
 import { html, css } from './util';
 const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
+
+const pretendard_black = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Black.woff2`).toString('base64');
+const pretendard_extrabold = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-ExtraBold.woff2`).toString('base64');
+const pretendard_bold = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Bold.woff2`).toString('base64');
+const pretendard_semibold = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-SemiBold.woff2`).toString('base64');
+const pretendard_medium = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Medium.woff2`).toString('base64');
+const pretendard_regular = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Regular.woff2`).toString('base64');
+const pretendard_light = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Light.woff2`).toString('base64');
+const pretendard_thin = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-Thin.woff2`).toString('base64');
+const pretendard_extralight = readFileSync(`${__dirname}/../_fonts/woff2/Pretendard-ExtraLight.woff2`).toString('base64');
+
 
 function getCss(theme: Theme, fontSize: string) {
     let background = theme ?? 'black';
@@ -25,63 +37,63 @@ function getCss(theme: Theme, fontSize: string) {
         font-family: 'Pretendard';
         font-weight: 900;
         font-display: swap;
-        src: local('Pretendard Black'), url('${__dirname}/../_fonts/woff2/Pretendard-Black.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Black.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_black});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 800;
         font-display: swap;
-        src: local('Pretendard ExtraBold'), url('${__dirname}/../_fonts/woff2/Pretendard-ExtraBold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-ExtraBold.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_extrabold});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 700;
         font-display: swap;
-        src: local('Pretendard Bold'), url('${__dirname}/../_fonts/woff2/Pretendard-Bold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Bold.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_bold});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 600;
         font-display: swap;
-        src: local('Pretendard SemiBold'), url('${__dirname}/../_fonts/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-SemiBold.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_semibold});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 500;
         font-display: swap;
-        src: local('Pretendard Medium'), url('${__dirname}/../_fonts/woff2/Pretendard-Medium.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Medium.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_medium});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 400;
         font-display: swap;
-        src: local('Pretendard Regular'), url('${__dirname}/../_fonts/woff2/Pretendard-Regular.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Regular.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_regular});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 300;
         font-display: swap;
-        src: local('Pretendard Light'), url('${__dirname}/../_fonts/woff2/Pretendard-Light.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Light.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_light});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 200;
         font-display: swap;
-        src: local('Pretendard ExtraLight'), url('${__dirname}/../_fonts/woff2/Pretendard-ExtraLight.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-ExtraLight.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_thin});
     }
 
     @font-face {
         font-family: 'Pretendard';
         font-weight: 100;
         font-display: swap;
-        src: local('Pretendard Thin'), url('${__dirname}/../_fonts/woff2/Pretendard-Thin.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Thin.woff') format('woff');
+        src: url(data:font/woff2;charset=utf-8;base64,${pretendard_extralight});
     }
 
 
