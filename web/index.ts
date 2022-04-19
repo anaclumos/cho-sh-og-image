@@ -175,9 +175,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
     const {
         fileType = 'png',
         fontSize = '100px',
-        theme = '#f46d25',
+        theme = `${themeOptions[0].value}`,
         md = true,
-        text = '**Hello** World',
+        text = `${theme === themeOptions[0].value ? '**조성현닷컴**' : '**cho.sh**'}`,
         images=[imageOptions[0].value],
         widths=[],
         heights=[],
