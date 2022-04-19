@@ -1,5 +1,3 @@
-
-import { readFileSync } from 'fs';
 import { marked } from 'marked';
 import { sanitizeHtml } from './sanitizer';
 import { ParsedRequest, Theme } from './types';
@@ -8,36 +6,84 @@ const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
-
 function getCss(theme: Theme, fontSize: string) {
     let background = theme ?? 'black';
     let foreground = 'white';
     let radial = 'lightgray';
 
     return css`
+    /*
+    Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+    https://github.com/orioncactus/pretendard
+
+    This Font Software is licensed under the SIL Open Font License, Version 1.1.
+    This license is copied below, and is also available with a FAQ at:
+    http://scripts.sil.org/OFL
+    */
+
     @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+        font-family: 'Pretendard';
+        font-weight: 900;
+        font-display: swap;
+        src: local('Pretendard Black'), url('${__dirname}/../_fonts/woff2/Pretendard-Black.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Black.woff') format('woff');
     }
 
     @font-face {
-        font-family: 'Inter';
-        font-style:  normal;
-        font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+        font-family: 'Pretendard';
+        font-weight: 800;
+        font-display: swap;
+        src: local('Pretendard ExtraBold'), url('${__dirname}/../_fonts/woff2/Pretendard-ExtraBold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-ExtraBold.woff') format('woff');
     }
 
     @font-face {
-        font-family: 'Vera';
-        font-style: normal;
-        font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
-      }
+        font-family: 'Pretendard';
+        font-weight: 700;
+        font-display: swap;
+        src: local('Pretendard Bold'), url('${__dirname}/../_fonts/woff2/Pretendard-Bold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Bold.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 600;
+        font-display: swap;
+        src: local('Pretendard SemiBold'), url('${__dirname}/../_fonts/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-SemiBold.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 500;
+        font-display: swap;
+        src: local('Pretendard Medium'), url('${__dirname}/../_fonts/woff2/Pretendard-Medium.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Medium.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 400;
+        font-display: swap;
+        src: local('Pretendard Regular'), url('${__dirname}/../_fonts/woff2/Pretendard-Regular.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Regular.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 300;
+        font-display: swap;
+        src: local('Pretendard Light'), url('${__dirname}/../_fonts/woff2/Pretendard-Light.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Light.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 200;
+        font-display: swap;
+        src: local('Pretendard ExtraLight'), url('${__dirname}/../_fonts/woff2/Pretendard-ExtraLight.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-ExtraLight.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-weight: 100;
+        font-display: swap;
+        src: local('Pretendard Thin'), url('${__dirname}/../_fonts/woff2/Pretendard-Thin.woff2') format('woff2'), url('${__dirname}/../_fonts/woff/Pretendard-Thin.woff') format('woff');
+    }
+
 
     body {
         background: ${background};
@@ -91,7 +137,7 @@ function getCss(theme: Theme, fontSize: string) {
     }
     
     .heading {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Pretendard', sans-serif;
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
