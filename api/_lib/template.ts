@@ -21,7 +21,7 @@ function getCss(theme: string, fontSize: string) {
         foreground = 'white';
         radial = 'dimgray';
     }
-    return `
+    return css`
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
@@ -105,7 +105,7 @@ function getCss(theme: string, fontSize: string) {
 
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
-    return `<!DOCTYPE html>
+    return html`<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
@@ -132,7 +132,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 }
 
 function getImage(src: string, width ='auto', height = '225') {
-    return `<img
+    return html`<img
         class="logo"
         alt="Generated Image"
         src="${sanitizeHtml(src)}"
