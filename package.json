@@ -17,6 +17,5 @@
     "@types/puppeteer": "5.4.4",
     "@types/puppeteer-core": "5.4.0",
     "typescript": "4.1.5",
-    "vercel": "4.1.5"
   }
 }
