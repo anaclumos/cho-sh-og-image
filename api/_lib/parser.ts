@@ -1,10 +1,10 @@
-import { IncomingMessage } from 'http'
+import { Event } from '@netlify/functions/dist/function/event'
 import { parse } from 'url'
 import { ParsedRequest, Theme } from './types'
 
-export function parseRequest(req: IncomingMessage) {
-  console.log('HTTP ' + req.url)
-  const { pathname, query } = parse(req.url || '/', true)
+export function parseRequest(req: Event) {
+  console.log('HTTP ' + req.path)
+  const { pathname, query } = parse(req.path.replace('/.netlify/functions/index', '') || '/', true)
   const { fontSize, images, widths, heights, theme, md } = query || {}
 
   if (Array.isArray(fontSize)) {

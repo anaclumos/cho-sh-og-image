@@ -1,0 +1,7 @@
+[build]
+  command = "yarn build"
+  publish = "public"
+
+[functions]
+  directory = "api"
+  external_node_modules = ["chrome-aws-lambda"]
